@@ -50,8 +50,7 @@
     shell          = pkgs.bash;
   };
 
-  # Auto-login: skip the TTY login prompt entirely
-  services.getty.autologinUser = "ai";
+  # Auto-login handled by services.cage (see ai-shell.nix)
 
   # ── Immutability ─────────────────────────────────────────────────────────
   # The entire system is read-only; only /home and /var are writable
