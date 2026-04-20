@@ -38,7 +38,8 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # ── Users ────────────────────────────────────────────────────────────────
-  users.mutableUsers = false;
+  users.mutableUsers        = false;
+  users.allowNoPasswordLogin = true;
 
   users.users.ai = {
     isNormalUser  = true;
