@@ -10,7 +10,7 @@
     host        = "127.0.0.1";
     port        = 11434;
     # Use GPU acceleration when available; falls back to CPU automatically
-    acceleration = "auto";
+    acceleration = null;  # null = CPU fallback; change to "cuda" or "rocm" for GPU
     # Models are stored in persistent state (survives reboots)
     home        = "/var/lib/ollama";
   };
