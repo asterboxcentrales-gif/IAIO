@@ -20,18 +20,20 @@
       modules = [ ./nix/configuration.nix ];
     };
 
-    # ISO image target — run: nix build .#iso
-    packages.${system}.iso = nixos-generators.nixosGenerate {
-      inherit system;
-      format  = "iso";
-      modules = [ ./nix/configuration.nix ];
-    };
+    packages.${system} = {
+      # ISO image — run: nix build .#iso
+      iso = nixos-generators.nixosGenerate {
+        inherit system;
+        format  = "iso";
+        modules = [ ./nix/configuration.nix ];
+      };
 
-    # QEMU VM for rapid iteration — run: nix build .#vm && result/bin/run-*-vm
-    packages.${system}.vm = nixos-generators.nixosGenerate {
-      inherit system;
-      format  = "vm";
-      modules = [ ./nix/configuration.nix ];
+      # QEMU VM for rapid iteration — run: nix build .#vm && result/bin/run-*-vm
+      vm = nixos-generators.nixosGenerate {
+        inherit system;
+        format  = "vm";
+        modules = [ ./nix/configuration.nix ];
+      };
     };
   };
 }
