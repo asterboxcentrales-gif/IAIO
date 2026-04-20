@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-OS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Status bar -->
+  <header id="status-bar">
+    <span id="status-hostname">ai-os</span>
+    <span id="status-model">
+      <span class="dot" id="ollama-dot"></span>
+      <span id="model-name">connecting…</span>
+    </span>
+    <span id="status-time"></span>
+  </header>
+
+  <!-- Chat history -->
+  <main id="chat-view">
+    <div id="messages">
+      <div class="message system">
+        <span class="role-label">SYSTEM</span>
+        <p>AI-OS ready. Type a command or question.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Input bar -->
+  <footer id="input-bar">
+    <span id="prompt-caret">▸</span>
+    <div id="input-wrapper">
+      <textarea
+        id="user-input"
+        rows="1"
+        placeholder="Ask anything or give a system command…"
+        autofocus
+        spellcheck="false"
+      ></textarea>
+    </div>
+    <button id="send-btn" title="Send (Enter)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </footer>
+
+  <!-- Workspace panel (toggle with Ctrl+Space) -->
+  <aside id="workspace-panel" class="hidden">
+    <div id="workspace-header">
+      <span>Semantic Workspace</span>
+      <input id="ws-search" type="text" placeholder="Search your knowledge…" />
+    </div>
+    <ul id="ws-results"></ul>
+  </aside>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
