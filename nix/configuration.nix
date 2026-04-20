@@ -8,24 +8,18 @@
   ];
 
   # ── Boot ─────────────────────────────────────────────────────────────────
+  # NOTE: bootloader (GRUB/EFI) is intentionally omitted here.
+  # nixos-generators injects the correct bootloader for each format
+  # (isolinux for ISO, EFI stub for raw images). Defining it here conflicts.
   boot = {
-    loader.grub = {
-      enable  = true;
-      device  = "nodev";
-      efiSupport = true;
-    };
-    loader.efi.canTouchEfiVariables = true;
-
-    # Stripped-down kernel — only what we need for display + network + NVMe
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules  = [ "virtio_gpu" "i915" "amdgpu" "nouveau" ];
 
-    # Silent boot: remove TTY splash, go straight to compositor
     kernelParams = [
       "quiet" "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"  "vt.global_cursor_default=0"
+      "rd.udev.log_level=3" "vt.global_cursor_default=0"
     ];
-    initrd.verbose = false;
+    initrd.verbose  = false;
     consoleLogLevel = 0;
   };
 
